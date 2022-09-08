@@ -8,11 +8,11 @@ import 'package:shelf_modular/shelf_modular.dart';
 class UserResource extends Resource {
   @override
   List<Route> get routes => [
-        Route.get('/users', _getAllUsers),
+        Route.get('/user', _getAllUsers),
         Route.get('/user/:id', _getUserByid),
-        Route.post('user', _createUser),
-        Route.put('user/', _updateUser),
-        Route.delete('user/:id', _deleteUser)
+        Route.post('/user', _createUser),
+        Route.put('/user', _updateUser),
+        Route.delete('/user/:id', _deleteUser),
       ];
 
   FutureOr<Response> _getAllUsers(Injector injector) async {
