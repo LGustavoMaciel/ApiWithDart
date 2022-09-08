@@ -4,11 +4,12 @@ info:
   version: "1.0.0"
   title: "Semana do Backend"
 servers:
-  - url: http://localhost:8080
+  - url: http://localhost:4466
     description: Local server
 tags:
 - name: "user"
   description: "Access to User"
+
 paths:
   /user/{id}:
     get:
@@ -129,6 +130,9 @@ paths:
              application/json:
               schema: 
                 $ref: '#/components/schemas/BackendException'
+
+
+
 components:
   schemas:
     User:
@@ -168,3 +172,4 @@ components:
       properties:
         error: 
           type: string
+

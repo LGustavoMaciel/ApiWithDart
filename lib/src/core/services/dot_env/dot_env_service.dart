@@ -13,13 +13,9 @@ class DotEnvService {
     final envText = file.readAsStringSync();
 
     for (var line in envText.split('\n')) {
-      final linebreak = line.split('=');
-      _map[linebreak[0]] = linebreak[1];
+      final lineBreak = line.split('=');
+      _map[lineBreak[0]] = lineBreak[1];
     }
-  }
-
-  String? getValue(String key) {
-    return _map[key];
   }
 
   String? operator [](String key) {
