@@ -19,9 +19,12 @@ class PostgresDatabase implements RemoteDatabase, Disposable {
     final uri = Uri.parse(url);
 
     var connection = PostgreSQLConnection(
-        uri.host, uri.port, uri.pathSegments.first,
-        username: uri.userInfo.split(':').first,
-        password: uri.userInfo.split(':').last);
+      uri.host,
+      uri.port,
+      uri.pathSegments.first,
+      username: uri.userInfo.split(':').first,
+      password: uri.userInfo.split(':').last,
+    );
     await connection.open();
     completer.complete(connection);
   }
@@ -33,13 +36,15 @@ class PostgresDatabase implements RemoteDatabase, Disposable {
   }) async {
     final connection = await completer.future;
 
-    return await connection.mappedResultsQuery(queryText,
-        substitutionValues: variables);
+    return await connection.mappedResultsQuery(
+      queryText,
+      substitutionValues: variables,
+    );
   }
 
   @override
   void dispose() async {
     final connection = await completer.future;
-    connection.close();
+    await connection.close();
   }
 }

@@ -1,12 +1,8 @@
-import 'dart:async';
-
-import 'package:shelf/shelf.dart';
-import 'package:shelf/shelf_io.dart' as io;
 import 'package:backend/backend.dart';
+import 'package:shelf/shelf_io.dart' as io;
 
 void main(List<String> arguments) async {
   final handler = await startShelfModular();
-  final server = await io.serve(handler, '0.0.0.0', 8080);
-
-  print('Server Online - ${server.address.address}:${server.port}');
+  final server = await io.serve(handler, 'localhost', 8080);
+  print('Server online -  ${server.address.address}:${server.port}');
 }
