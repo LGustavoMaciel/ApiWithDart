@@ -3,7 +3,10 @@ import 'package:test/test.dart';
 
 void main() {
   test('dot env service ...', () async {
-    final service = DotEnvService.instance;
-    expect(service['DATABASE_URL'], 'postgres://postgres:postgrespw@localhost:49153');
+    final service = DotEnvService(mocks: {
+      'DATABASE_URL': 'postgres://postgres:postgrespw@localhost:55000'
+    });
+    expect(service['DATABASE_URL'],
+        'postgres://postgres:postgrespw@localhost:55000');
   });
 }
